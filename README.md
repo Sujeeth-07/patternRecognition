@@ -10,15 +10,7 @@ A simple **Flask-based** web application designed for children (ages 4-8) to pra
 
 ---
 
-## 🚀 Installation  
 
-### **1️⃣ Clone the repository**  
-```bash
-git clone https://github.com/Sujeeth-07/Updated--Pattern_recognition.git
-cd Updated--Pattern_recognition
-```
-
----
 
 ### **2️⃣ Install dependencies**  
 ```bash
