@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 class="head">Your Result:</h1>
+    <div class="contain">
+        <h2>You scored {{ score }} out of {{ total }}</h2>
+
+        {% if score == total %}
+            <p style="color: green; font-size: 20px;">🎉 Excellent Job! You got all correct!</p>
+            <div class="image-container">  <img src="{{ url_for('static', filename='images/Correct.gif') }}" alt="Success" width="200">
+            </div>
+        {% elif score >= total // 2 %}
+            <p style="color: orange; font-size: 20px;">😊 Good Try! Keep practicing.</p>
+            <div class="image-container">  <img src="{{ url_for('static', filename='images/Almost.gif') }}" alt="Almost" width="200">
+            </div>
+        {% else %}
+            <p style="color: red; font-size: 20px;">❌ Try Again! You'll get better.</p>
+            <div class="image-container">  <img src="{{ url_for('static', filename='images/Wrong.gif') }}" alt="Failure" width="200">
+            </div>
+        {% endif %}
+
+        <h3>Review Your Answers:</h3>
+        <ul>
+            {% for user_answer, correct_answer in user_answers %}
+                <li>
+                    You chose: <b>{{ user_answer }}</b> | Correct Answer: <b>{{ correct_answer }}</b>
+                    {% if user_answer == correct_answer %}
+                        ✅
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="link-container">  <a href="/">Try Another Test</a>
+        </div>
+    </div>
+</body>
+</html>
